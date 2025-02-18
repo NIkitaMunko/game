@@ -1,11 +1,11 @@
-package src;
+package picturesliding.core;
 
-public class Field {
+public class GameField {
 
     private int columns;
     private int rows;
 
-    public Field(int rows, int columns) {
+    public GameField(int rows, int columns) {
         this.columns = columns;
         this.rows = rows;
     }
