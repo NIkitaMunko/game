@@ -1,5 +1,7 @@
 package picturesliding.core;
 
 public enum GameState {
-    PLAYING, SOLVED, PAUSED
+    PLAYING,
+    SOLVED,
+    PAUSED
 }
