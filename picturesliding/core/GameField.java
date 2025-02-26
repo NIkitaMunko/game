@@ -61,6 +61,10 @@ public class GameField {
             }
         }
 
+        if (numRow == -1 || numCol == -1 || zeroRow == -1 || zeroCol == -1) {
+            return;
+        }
+
         if ((Math.abs(numRow - zeroRow) == 1 && numCol == zeroCol) || (Math.abs(numCol - zeroCol) == 1 && numRow == zeroRow)) {
             fieldArray[zeroRow][zeroCol] = new Tile(num);
             fieldArray[numRow][numCol] = new Tile(0);
@@ -87,10 +91,6 @@ public class GameField {
         }
         state = GameState.SOLVED;
         return true;
-    }
-
-    public boolean isPaused() {
-        return false;
     }
 
     public GameState getState() {

@@ -9,11 +9,10 @@ import java.util.Scanner;
 public class ConsoleUI {
 
     private GameField field;
-    private Scanner scanner;
+    private static final Scanner scanner = new Scanner(System.in);
 
-    public ConsoleUI(int rows, int columns) {
-        this.field = new GameField(rows, columns);
-        this.scanner = new Scanner(System.in);
+    public ConsoleUI(GameField field) {
+        this.field = field;
     }
 
     public void play() {
@@ -41,9 +40,15 @@ public class ConsoleUI {
         Tile[][] fieldArray = field.getFieldArray();
         for (Tile[] row : fieldArray) {
             for (Tile tile : row) {
-                System.out.printf("%3d ", tile.getPiece());
+                System.out.printf("| %2d ", tile.getPiece());
             }
-            System.out.println();
+            System.out.println("|");
         }
+        System.out.println();
     }
+
+    public static void closeScanner() {
+        scanner.close();
+    }
+
 }
