@@ -7,8 +7,8 @@ import java.util.List;
 public class GameField {
 
     private GameState state;
-    private int columns;
-    private int rows;
+    private final int columns;
+    private final int rows;
     private Tile[][] fieldArray;
 
     public GameField(int rows, int columns) {
@@ -16,11 +16,15 @@ public class GameField {
         this.rows = rows;
         this.state = GameState.PLAYING;
 
-        createField();
-        generateDismantledPicture();
+        generate();
     }
 
-    private void createField() {
+    private void generate() {
+        generateField();
+        fillWithTiles();
+    }
+
+    private void generateField() {
         fieldArray = new Tile[rows][columns];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
@@ -29,7 +33,7 @@ public class GameField {
         }
     }
 
-    private void generateDismantledPicture() {
+    private void fillWithTiles() {
         List<Integer> numbers = new ArrayList<>();
         for (int i = 1; i < rows * columns; i++) {
             numbers.add(i);
@@ -46,7 +50,7 @@ public class GameField {
     }
 
 
-    public void movePicture(int num) {
+    public void moveTile(int num) {
         int numRow = -1, numCol = -1, zeroRow = -1, zeroCol = -1;
 
         for (int i = 0; i < rows; i++) {
@@ -78,17 +82,17 @@ public class GameField {
 
     public boolean isSolved() {
         int expectedValue = 1;
+
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                if (i == rows - 1 && j == columns - 1) {
+                if (i == rows - 1 && j == columns - 1)
                     return fieldArray[i][j].isEmpty();
-                }
-                if (fieldArray[i][j].getPiece() != expectedValue) {
+                if (fieldArray[i][j].getPiece() != expectedValue)
                     return false;
-                }
                 expectedValue++;
             }
         }
+
         state = GameState.SOLVED;
         return true;
     }
