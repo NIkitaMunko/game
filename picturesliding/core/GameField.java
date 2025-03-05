@@ -51,18 +51,17 @@ public class GameField {
     }
 
 
-    public void moveTile(int num) {
+    public void moveTile(int num) { // todo переделать чтобы вводилось не число а направление (вверх-вниз-влево-вправо)
         int numRow = -1, numCol = -1, zeroRow = -1, zeroCol = -1;
 
-        //  fixme i, j - row, col
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                if (fieldArray[i][j].getPiece() == num) {
-                    numRow = i;
-                    numCol = j;
-                } else if (fieldArray[i][j].isEmpty()) {
-                    zeroRow = i;
-                    zeroCol = j;
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < columns; col++) {
+                if (fieldArray[row][col].getPiece() == num) {
+                    numRow = row;
+                    numCol = col;
+                } else if (fieldArray[row][col].isEmpty()) {
+                    zeroRow = row;
+                    zeroCol = col;
                 }
             }
         }
