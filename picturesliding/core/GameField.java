@@ -20,6 +20,7 @@ public class GameField {
     }
 
     private void generate() {
+        // fixme generuje nie vyhratielnu hru = hluposť
         generateField();
         fillWithTiles();
     }
@@ -53,6 +54,7 @@ public class GameField {
     public void moveTile(int num) {
         int numRow = -1, numCol = -1, zeroRow = -1, zeroCol = -1;
 
+        //  fixme i, j - row, col
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 if (fieldArray[i][j].getPiece() == num) {
