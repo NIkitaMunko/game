@@ -19,8 +19,8 @@ public class GameField {
         generate();
     }
 
+
     private void generate() {
-        // fixme generuje nie vyhratielnu hru = hluposť
         generateField();
         fillWithTiles();
     }
@@ -40,7 +40,10 @@ public class GameField {
             numbers.add(i);
         }
         numbers.add(0);
-        Collections.shuffle(numbers);
+
+        do {
+            Collections.shuffle(numbers);
+        } while (!isSolvable(numbers));
 
         int index = 0;
         for (int i = 0; i < rows; i++) {
@@ -48,6 +51,23 @@ public class GameField {
                 fieldArray[i][j] = new Tile(numbers.get(index++));
             }
         }
+    }
+
+    private boolean isSolvable(List<Integer> numbers) {
+        int inversions = 0;
+        int zeroRow = -1;
+
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(i) == 0) {
+                zeroRow = (i / columns) + 1;
+                continue;
+            }
+            for (int j = i + 1; j < numbers.size(); j++)
+                if (numbers.get(j) != 0 && numbers.get(i) > numbers.get(j))
+                    inversions++;
+        }
+
+        return columns % 2 == 1 ? inversions % 2 == 0 : (inversions + zeroRow) % 2 == 0;
     }
 
 

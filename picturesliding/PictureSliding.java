@@ -6,7 +6,7 @@ import picturesliding.core.GameField;
 public class PictureSliding {
 
     public static void main(String[] args) {
-        var gameField = new GameField(3, 3);
+        var gameField = new GameField(2, 2);
         var consoleUI = new ConsoleUI(gameField);
         consoleUI.play();
         ConsoleUI.closeScanner();
