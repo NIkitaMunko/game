@@ -71,28 +71,26 @@ public class GameField {
     }
 
 
-    public void moveTile(int num) { // todo переделать чтобы вводилось не число а направление (вверх-вниз-влево-вправо)
-        int numRow = -1, numCol = -1, zeroRow = -1, zeroCol = -1;
+    public void moveTile(Direction direction) {
+        int zeroRow = -1, zeroCol = -1;
 
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < columns; col++) {
-                if (fieldArray[row][col].getPiece() == num) {
-                    numRow = row;
-                    numCol = col;
-                } else if (fieldArray[row][col].isEmpty()) {
+                if (fieldArray[row][col].isEmpty()) {
                     zeroRow = row;
                     zeroCol = col;
+                    break;
                 }
             }
         }
 
-        if (numRow == -1 || numCol == -1 || zeroRow == -1 || zeroCol == -1) {
-            return;
-        }
+        int[] move = direction.getMove();
+        int newRow = zeroRow + move[0];
+        int newCol = zeroCol + move[1];
 
-        if ((Math.abs(numRow - zeroRow) == 1 && numCol == zeroCol) || (Math.abs(numCol - zeroCol) == 1 && numRow == zeroRow)) {
-            fieldArray[zeroRow][zeroCol] = new Tile(num);
-            fieldArray[numRow][numCol] = new Tile(0);
+        if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < columns) {
+            fieldArray[zeroRow][zeroCol] = new Tile(fieldArray[newRow][newCol].getPiece());
+            fieldArray[newRow][newCol] = new Tile(0);
         }
     }
 

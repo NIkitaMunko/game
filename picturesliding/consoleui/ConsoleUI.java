@@ -1,5 +1,6 @@
 package picturesliding.consoleui;
 
+import picturesliding.core.Direction;
 import picturesliding.core.GameField;
 import picturesliding.core.GameState;
 import picturesliding.core.Tile;
@@ -80,21 +81,25 @@ public class ConsoleUI {
     public void play() {
         while (!field.isSolved() && field.getState() == GameState.PLAYING) {
             printField();
-            int input = handleInput();
-            field.moveTile(input);
+            Direction direction = handleInput();
+            if (direction != null) field.moveTile(direction);
         }
         printField();
         System.out.println("Congratulations! You solved the puzzle.");
     }
 
-    private int handleInput() {
-        System.out.print("Enter a number to move: ");
-        try {
-            return Integer.parseInt(scanner.nextLine());
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid input. Please enter a number.");
-            return 0;
+    private Direction handleInput() {
+        System.out.print("Enter direction (WASD): ");
+        String input = scanner.nextLine().trim().toLowerCase();
+        Direction direction = Direction.getDirection(input);
+
+        if (direction != null) {
+            System.out.println("Player moved: " + direction);
+            return direction;
         }
+
+        System.out.println("Invalid input. Please enter W, A, S, or D.");
+        return null;
     }
 
     private void printField() {
