@@ -27,17 +27,17 @@ public class GameField {
 
     private void generateField() {
         fieldArray = new Tile[rows][columns];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                fieldArray[i][j] = new Tile(0);
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < columns; col++) {
+                fieldArray[row][col] = new Tile(0);
             }
         }
     }
 
     private void fillWithTiles() {
         List<Integer> numbers = new ArrayList<>();
-        for (int i = 1; i < rows * columns; i++) {
-            numbers.add(i);
+        for (int tileNumber = 1; tileNumber < rows * columns; tileNumber++) {
+            numbers.add(tileNumber);
         }
         numbers.add(0);
 
@@ -46,9 +46,9 @@ public class GameField {
         } while (!isSolvable(numbers));
 
         int index = 0;
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                fieldArray[i][j] = new Tile(numbers.get(index++));
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < columns; col++) {
+                fieldArray[row][col] = new Tile(numbers.get(index++));
             }
         }
     }
@@ -56,14 +56,15 @@ public class GameField {
     private boolean isSolvable(List<Integer> numbers) {
         int inversions = 0;
         int zeroRow = -1;
+        int numbersSize = numbers.size();
 
-        for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.get(i) == 0) {
-                zeroRow = (i / columns) + 1;
+        for (int currentIndex = 0; currentIndex < numbersSize; currentIndex++) {
+            if (numbers.get(currentIndex) == 0) {
+                zeroRow = (currentIndex / columns) + 1;
                 continue;
             }
-            for (int j = i + 1; j < numbers.size(); j++)
-                if (numbers.get(j) != 0 && numbers.get(i) > numbers.get(j))
+            for (int nextIndex = currentIndex + 1; nextIndex < numbersSize; nextIndex++)
+                if (numbers.get(nextIndex) != 0 && numbers.get(currentIndex) > numbers.get(nextIndex))
                     inversions++;
         }
 
@@ -102,11 +103,11 @@ public class GameField {
     public boolean isSolved() {
         int expectedValue = 1;
 
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                if (i == rows - 1 && j == columns - 1)
-                    return fieldArray[i][j].isEmpty();
-                if (fieldArray[i][j].getPiece() != expectedValue)
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < columns; col++) {
+                if (row == rows - 1 && col == columns - 1)
+                    return fieldArray[row][col].isEmpty();
+                if (fieldArray[row][col].getPiece() != expectedValue)
                     return false;
                 expectedValue++;
             }
