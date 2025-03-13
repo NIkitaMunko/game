@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DatabaseToolSources">
-    <data-source name="localhost" uuid="49bc16cf-37b6-4891-80f4-9b168fdb82a5" type="POSTGRES">
-      <base-info connect-type="DB_DEFAULT" major-version="0" minor-version="0" jdbc-major-version="0" jdbc-minor-version="0" />
-      <user-name />
+    <data-source name="gamestudio" uuid="0fb132f0-1739-4954-9016-3aa183cb98dc" type="POSTGRES">
+      <base-info connect-type="DB_DEFAULT" product="PostgreSQL" version="17.4" major-version="17" minor-version="4" jdbc-name="PostgreSQL JDBC Driver" jdbc-version="42.7.3" jdbc-major-version="42" jdbc-minor-version="7" />
+      <user-name>postgres</user-name>
       <choose-schema-mapping>
         <introspection-scope>
           <node negative="1">
