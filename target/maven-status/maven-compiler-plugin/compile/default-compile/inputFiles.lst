@@ -1,0 +1,16 @@
+D:\gamestudio-9162\src\main\java\sk\tuke\gamestudio\entity\Comment.java
+D:\gamestudio-9162\src\main\java\sk\tuke\gamestudio\entity\Rating.java
+D:\gamestudio-9162\src\main\java\sk\tuke\gamestudio\entity\Score.java
+D:\gamestudio-9162\src\main\java\sk\tuke\gamestudio\picturesliding\consoleui\ConsoleUI.java
+D:\gamestudio-9162\src\main\java\sk\tuke\gamestudio\picturesliding\core\Direction.java
+D:\gamestudio-9162\src\main\java\sk\tuke\gamestudio\picturesliding\core\GameField.java
+D:\gamestudio-9162\src\main\java\sk\tuke\gamestudio\picturesliding\core\GameState.java
+D:\gamestudio-9162\src\main\java\sk\tuke\gamestudio\picturesliding\core\Tile.java
+D:\gamestudio-9162\src\main\java\sk\tuke\gamestudio\picturesliding\PictureSliding.java
+D:\gamestudio-9162\src\main\java\sk\tuke\gamestudio\service\CommentException.java
+D:\gamestudio-9162\src\main\java\sk\tuke\gamestudio\service\CommentService.java
+D:\gamestudio-9162\src\main\java\sk\tuke\gamestudio\service\RatingException.java
+D:\gamestudio-9162\src\main\java\sk\tuke\gamestudio\service\RatingService.java
+D:\gamestudio-9162\src\main\java\sk\tuke\gamestudio\service\ScoreException.java
+D:\gamestudio-9162\src\main\java\sk\tuke\gamestudio\service\ScoreService.java
+D:\gamestudio-9162\src\main\java\sk\tuke\gamestudio\service\ScoreServiceJDBC.java
