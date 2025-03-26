@@ -1,7 +1,12 @@
 package sk.tuke.gamestudio.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Date;
 
+@Setter
+@Getter
 public class Score {
     private String game;
 
@@ -18,38 +23,6 @@ public class Score {
         this.playedOn = playedOn;
     }
 
-    public String getGame() {
-        return game;
-    }
-
-    public void setGame(String game) {
-        this.game = game;
-    }
-
-    public String getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(String player) {
-        this.player = player;
-    }
-
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
-    }
-
-    public Date getPlayedOn() {
-        return playedOn;
-    }
-
-    public void setPlayedOn(Date playedOn) {
-        this.playedOn = playedOn;
-    }
-
     @Override
     public String toString() {
         return "Score{" +
@@ -59,5 +32,4 @@ public class Score {
                 ", playedOn=" + playedOn +
                 '}';
     }
-
 }
