@@ -1,3 +1,4 @@
-core\GameFieldTest.class
-consoleui\ConsoleUITest.class
-core\TileTest.class
+service/ScoreServiceJDBCTest$1.class
+service/CommentServiceJDBCTest.class
+service/ScoreServiceJDBCTest.class
+service/RatingServiceJDBCTest.class
