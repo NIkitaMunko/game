@@ -1,4 +1,5 @@
 /Users/nikitamunko/Documents/TUKE/tuke2.2/kp2025/gamestudio-9162/src/main/java/sk/tuke/gamestudio/picturesliding/PictureSliding.java
+/Users/nikitamunko/Documents/TUKE/tuke2.2/kp2025/gamestudio-9162/src/main/java/sk/tuke/gamestudio/picturesliding/SpringClient.java
 /Users/nikitamunko/Documents/TUKE/tuke2.2/kp2025/gamestudio-9162/src/main/java/sk/tuke/gamestudio/picturesliding/consoleui/ConsoleUI.java
 /Users/nikitamunko/Documents/TUKE/tuke2.2/kp2025/gamestudio-9162/src/main/java/sk/tuke/gamestudio/picturesliding/core/Direction.java
 /Users/nikitamunko/Documents/TUKE/tuke2.2/kp2025/gamestudio-9162/src/main/java/sk/tuke/gamestudio/picturesliding/core/GameField.java
@@ -10,9 +11,12 @@
 /Users/nikitamunko/Documents/TUKE/tuke2.2/kp2025/gamestudio-9162/src/main/java/sk/tuke/gamestudio/picturesliding/service/CommentException.java
 /Users/nikitamunko/Documents/TUKE/tuke2.2/kp2025/gamestudio-9162/src/main/java/sk/tuke/gamestudio/picturesliding/service/CommentService.java
 /Users/nikitamunko/Documents/TUKE/tuke2.2/kp2025/gamestudio-9162/src/main/java/sk/tuke/gamestudio/picturesliding/service/CommentServiceJDBC.java
+/Users/nikitamunko/Documents/TUKE/tuke2.2/kp2025/gamestudio-9162/src/main/java/sk/tuke/gamestudio/picturesliding/service/CommentServiceJPA.java
 /Users/nikitamunko/Documents/TUKE/tuke2.2/kp2025/gamestudio-9162/src/main/java/sk/tuke/gamestudio/picturesliding/service/RatingException.java
 /Users/nikitamunko/Documents/TUKE/tuke2.2/kp2025/gamestudio-9162/src/main/java/sk/tuke/gamestudio/picturesliding/service/RatingService.java
 /Users/nikitamunko/Documents/TUKE/tuke2.2/kp2025/gamestudio-9162/src/main/java/sk/tuke/gamestudio/picturesliding/service/RatingServiceJDBC.java
+/Users/nikitamunko/Documents/TUKE/tuke2.2/kp2025/gamestudio-9162/src/main/java/sk/tuke/gamestudio/picturesliding/service/RatingServiceJPA.java
 /Users/nikitamunko/Documents/TUKE/tuke2.2/kp2025/gamestudio-9162/src/main/java/sk/tuke/gamestudio/picturesliding/service/ScoreException.java
 /Users/nikitamunko/Documents/TUKE/tuke2.2/kp2025/gamestudio-9162/src/main/java/sk/tuke/gamestudio/picturesliding/service/ScoreService.java
 /Users/nikitamunko/Documents/TUKE/tuke2.2/kp2025/gamestudio-9162/src/main/java/sk/tuke/gamestudio/picturesliding/service/ScoreServiceJDBC.java
+/Users/nikitamunko/Documents/TUKE/tuke2.2/kp2025/gamestudio-9162/src/main/java/sk/tuke/gamestudio/picturesliding/service/ScoreServiceJPA.java

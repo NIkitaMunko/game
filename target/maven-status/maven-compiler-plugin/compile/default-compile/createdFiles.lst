@@ -1,3 +1,4 @@
+sk/tuke/gamestudio/picturesliding/SpringClient.class
 sk/tuke/gamestudio/picturesliding/entity/Rating.class
 sk/tuke/gamestudio/picturesliding/service/ScoreService.class
 sk/tuke/gamestudio/picturesliding/service/CommentService.class
@@ -5,8 +6,11 @@ sk/tuke/gamestudio/picturesliding/service/RatingServiceJDBC.class
 sk/tuke/gamestudio/picturesliding/service/CommentServiceJDBC.class
 sk/tuke/gamestudio/picturesliding/service/RatingException.class
 sk/tuke/gamestudio/picturesliding/entity/Score.class
+sk/tuke/gamestudio/picturesliding/service/CommentServiceJPA.class
 sk/tuke/gamestudio/picturesliding/service/ScoreServiceJDBC.class
+sk/tuke/gamestudio/picturesliding/service/RatingServiceJPA.class
 sk/tuke/gamestudio/picturesliding/service/CommentException.class
+sk/tuke/gamestudio/picturesliding/service/ScoreServiceJPA.class
 sk/tuke/gamestudio/picturesliding/entity/Comment.class
 sk/tuke/gamestudio/picturesliding/service/RatingService.class
 sk/tuke/gamestudio/picturesliding/service/ScoreException.class
