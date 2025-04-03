@@ -2,16 +2,14 @@ package sk.tuke.gamestudio.picturesliding.consoleui;
 
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import sk.tuke.gamestudio.picturesliding.core.Direction;
 import sk.tuke.gamestudio.picturesliding.core.GameField;
 import sk.tuke.gamestudio.picturesliding.core.GameState;
 import sk.tuke.gamestudio.picturesliding.core.Tile;
-import sk.tuke.gamestudio.picturesliding.entity.Score;
-import sk.tuke.gamestudio.picturesliding.service.CommentService;
-import sk.tuke.gamestudio.picturesliding.service.RatingService;
-import sk.tuke.gamestudio.picturesliding.service.RatingServiceJPA;
-import sk.tuke.gamestudio.picturesliding.service.ScoreService;
+import sk.tuke.gamestudio.entity.Score;
+import sk.tuke.gamestudio.service.CommentService;
+import sk.tuke.gamestudio.service.RatingService;
+import sk.tuke.gamestudio.service.ScoreService;
 
 import java.util.Date;
 import java.util.Scanner;
@@ -105,7 +103,7 @@ public class ConsoleUI {
         }
         printField();
         System.out.println("Congratulations! You solved the puzzle.");
-        scoreService.addScore(new Score("picture_sliding", "Nikita Munko", 445, new Date()));
+//        scoreService.addScore(new Score("picture_sliding", "Nikita Munko", 228, new Date()));
     }
 
     private Direction handleInput() {

@@ -1,4 +1,4 @@
-package sk.tuke.gamestudio.picturesliding;
+package sk.tuke.gamestudio;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 import sk.tuke.gamestudio.picturesliding.consoleui.ConsoleUI;
 import sk.tuke.gamestudio.picturesliding.core.GameField;
-import sk.tuke.gamestudio.picturesliding.service.*;
+import sk.tuke.gamestudio.service.*;
 
 @SpringBootApplication
 @Configuration

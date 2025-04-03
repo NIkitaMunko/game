@@ -1,6 +1,6 @@
-package sk.tuke.gamestudio.picturesliding.service;
+package sk.tuke.gamestudio.service;
 
-import sk.tuke.gamestudio.picturesliding.entity.Score;
+import sk.tuke.gamestudio.entity.Score;
 
 import java.sql.*;
 import java.util.ArrayList;

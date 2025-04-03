@@ -1,4 +1,4 @@
-package sk.tuke.gamestudio.picturesliding.entity;
+package sk.tuke.gamestudio.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,14 +9,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
 
-@Setter
 @Getter
+@Setter
 @Entity
-@NamedQuery(name = "Rating.getAverageRating",
-        query = "SELECT AVG(r.rating) FROM Rating r WHERE r.game = :game")
-@NamedQuery(name = "Rating.resetRatings",
-        query = "DELETE FROM Rating")
-public class Rating {
+@NamedQuery(name = "Comment.getComments",
+        query = "SELECT c FROM Comment c WHERE c.game = :game ORDER BY c.commentedOn DESC")
+@NamedQuery( name = "Comment.resetComments",
+        query = "DELETE FROM Comment")
+public class Comment {
     @Id
     @GeneratedValue
     private int ident;
@@ -25,15 +25,15 @@ public class Rating {
 
     private String player;
 
-    private int rating;
+    private String comment;
 
-    private Date ratedOn;
+    private Date commentedOn;
 
-    public Rating(String game, String player, int rating, Date ratedOn) {
+    public Comment(String game, String player, String comment, Date commentedOn) {
         this.game = game;
         this.player = player;
-        this.rating = rating;
-        this.ratedOn = ratedOn;
+        this.comment = comment;
+        this.commentedOn = commentedOn;
     }
 
     @Override
@@ -41,8 +41,8 @@ public class Rating {
         return "Score{" +
                 "game='" + game + '\'' +
                 ", player='" + player + '\'' +
-                ", rating=" + rating +
-                ", ratedOn=" + ratedOn +
+                ", comment=" + comment +
+                ", commentedOn=" + commentedOn +
                 '}';
     }
 }

@@ -1,4 +1,4 @@
-package sk.tuke.gamestudio.picturesliding.entity;
+package sk.tuke.gamestudio.entity;
 
 import lombok.Getter;
 import lombok.Setter;
