@@ -21,7 +21,7 @@ public class GameStudioServer {
     }
 
     @Bean
-    public CommentService commentService() { // FIXME есть два комментедОн, они конфликтуют между собой и вызывают ошибки. в других сервисах также
+    public CommentService commentService() {
         return new CommentServiceJPA();
     }
 

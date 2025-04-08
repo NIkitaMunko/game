@@ -17,7 +17,10 @@ public class RatingServiceRest {
         return ratingService.getAverageRating(game);
     }
 
-    // todo getRating
+    @GetMapping("/{player}/{game}")
+    public int getRating(@PathVariable String player, @PathVariable String game) {
+        return ratingService.getRating(game, player);
+    }
 
     @PostMapping
     public void setRating(@RequestBody Rating rating) {

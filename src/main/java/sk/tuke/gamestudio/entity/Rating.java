@@ -18,6 +18,8 @@ import java.util.Date;
         query = "SELECT AVG(r.rating) FROM Rating r WHERE r.game = :game")
 @NamedQuery(name = "Rating.resetRatings",
         query = "DELETE FROM Rating")
+@NamedQuery(name = "Rating.getRatingPlayer",
+        query = "SELECT r FROM Rating r WHERE r.game = :game AND r.player = :player")
 @NoArgsConstructor
 public class Rating {
     @Id

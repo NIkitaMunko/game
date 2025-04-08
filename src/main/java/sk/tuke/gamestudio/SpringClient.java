@@ -10,6 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import sk.tuke.gamestudio.picturesliding.consoleui.ConsoleUI;
 import sk.tuke.gamestudio.picturesliding.core.GameField;
 import sk.tuke.gamestudio.service.*;
@@ -39,6 +40,10 @@ public class SpringClient {
         return consoleUI;
     }
 
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 
     @Bean
     public GameField field() {
@@ -53,11 +58,13 @@ public class SpringClient {
 
     @Bean
     public CommentService commentService() {
-        return new CommentServiceJPA();
+//        return new CommentServiceJPA();
+        return new CommentServiceRestClient();
     }
 
     @Bean
     public RatingService ratingService() {
-        return new RatingServiceJPA();
+//        return new RatingServiceJPA();
+        return new RatingServiceRestClient();
     }
 }
