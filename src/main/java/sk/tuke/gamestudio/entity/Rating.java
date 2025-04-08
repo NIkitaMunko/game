@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.NamedQuery;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -29,6 +30,7 @@ public class Rating {
 
     private int rating;
 
+    @Column(name = "ratedon", nullable = false)
     private Date ratedOn;
 
     public Rating(String game, String player, int rating, Date ratedOn) {

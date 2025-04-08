@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.NamedQuery;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -29,6 +30,7 @@ public class Comment {
 
     private String comment;
 
+    @Column(name = "commentedon", nullable = false)
     private Date commentedOn;
 
     public Comment(String game, String player, String comment, Date commentedOn) {

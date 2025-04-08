@@ -4,10 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -30,6 +27,7 @@ public class Score implements Serializable {
 
     private int points;
 
+    @Column(name = "playedon", nullable = false)
     private Date playedOn;
 
     public Score(String game, String player, int points, Date playedOn) {
