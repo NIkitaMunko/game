@@ -1,6 +1,10 @@
+sk/tuke/gamestudio/server/webservice/ScoreServiceRest.class
 sk/tuke/gamestudio/service/RatingServiceJDBC.class
+sk/tuke/gamestudio/server/GameStudioServer.class
 sk/tuke/gamestudio/service/RatingServiceJPA.class
 sk/tuke/gamestudio/service/CommentServiceJDBC.class
 sk/tuke/gamestudio/SpringClient.class
 sk/tuke/gamestudio/service/ScoreServiceJPA.class
+sk/tuke/gamestudio/server/webservice/RatingServiceRest.class
 sk/tuke/gamestudio/service/CommentServiceJPA.class
+sk/tuke/gamestudio/server/webservice/CommentServiceRest.class

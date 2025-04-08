@@ -1,6 +1,7 @@
 package sk.tuke.gamestudio.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
@@ -17,6 +18,7 @@ import java.util.Date;
         query = "SELECT s FROM Score s WHERE s.game=:game ORDER BY s.points DESC")
 @NamedQuery( name = "Score.resetScores",
         query = "DELETE FROM Score")
+@NoArgsConstructor
 public class Score implements Serializable {
     @Id
     @GeneratedValue

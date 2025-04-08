@@ -1,6 +1,7 @@
 package sk.tuke.gamestudio.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.NamedQuery;
 
@@ -16,6 +17,7 @@ import java.util.Date;
         query = "SELECT c FROM Comment c WHERE c.game = :game ORDER BY c.commentedOn DESC")
 @NamedQuery( name = "Comment.resetComments",
         query = "DELETE FROM Comment")
+@NoArgsConstructor
 public class Comment {
     @Id
     @GeneratedValue

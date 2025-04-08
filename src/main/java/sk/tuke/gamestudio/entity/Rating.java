@@ -1,6 +1,7 @@
 package sk.tuke.gamestudio.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.NamedQuery;
 
@@ -16,6 +17,7 @@ import java.util.Date;
         query = "SELECT AVG(r.rating) FROM Rating r WHERE r.game = :game")
 @NamedQuery(name = "Rating.resetRatings",
         query = "DELETE FROM Rating")
+@NoArgsConstructor
 public class Rating {
     @Id
     @GeneratedValue
