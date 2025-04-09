@@ -2,6 +2,8 @@ package sk.tuke.gamestudio.picturesliding.consoleui;
 
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import sk.tuke.gamestudio.entity.Comment;
+import sk.tuke.gamestudio.entity.Rating;
 import sk.tuke.gamestudio.picturesliding.core.Direction;
 import sk.tuke.gamestudio.picturesliding.core.GameField;
 import sk.tuke.gamestudio.picturesliding.core.GameState;
@@ -22,63 +24,12 @@ public class ConsoleUI {
     private static final String RESET = "\033[0m";
     private static final String GRAY = "\033[90m";
     private static final String[] COLORS = {
-            "\033[32m",
-            "\033[33m",
-            "\033[34m",
-            "\033[35m",
-            "\033[36m",
-            "\033[91m",
-            "\033[92m",
-            "\033[93m",
-            "\033[94m",
-            "\033[95m",
-            "\033[96m",
-            "\033[97m",
-            "\033[48;5;250m",
-            "\033[48;5;51m",
-            "\033[48;5;10m",
-            "\033[48;5;196m",
-            "\033[48;5;82m",
-            "\033[48;5;220m",
-            "\033[48;5;214m",
-            "\033[48;5;33m",
-            "\033[48;5;124m",
-            "\033[48;5;76m",
-            "\033[48;5;28m",
-            "\033[48;5;167m",
-            "\033[48;5;5m",
-            "\033[48;5;13m",
-            "\033[48;5;9m",
-            "\033[48;5;27m",
-            "\033[48;5;17m",
-            "\033[48;5;101m",
-            "\033[48;5;60m",
-            "\033[48;5;98m",
-            "\033[48;5;131m",
-            "\033[48;5;53m",
-            "\033[48;5;87m",
-            "\033[48;5;130m",
-            "\033[48;5;210m",
-            "\033[48;5;238m",
-            "\033[48;5;197m",
-            "\033[48;5;143m",
-            "\033[48;5;202m",
-            "\033[48;5;155m",
-            "\033[48;5;48m",
-            "\033[48;5;111m",
-            "\033[48;5;105m",
-            "\033[48;5;24m",
-            "\033[48;5;40m",
-            "\033[48;5;147m",
-            "\033[48;5;67m",
-            "\033[48;5;171m",
-            "\033[48;5;75m",
-            "\033[48;5;61m",
-            "\033[48;5;77m",
-            "\033[48;5;109m",
-            "\033[48;5;155m",
-            "\033[48;5;226m",
-            "\033[48;5;92m"
+            "\033[32m", "\033[33m", "\033[34m", "\033[35m", "\033[36m", "\033[91m", "\033[92m", "\033[93m", "\033[94m", "\033[95m", "\033[96m", "\033[97m",
+            "\033[48;5;250m", "\033[48;5;51m", "\033[48;5;10m", "\033[48;5;196m", "\033[48;5;82m", "\033[48;5;220m", "\033[48;5;214m", "\033[48;5;33m", "\033[48;5;124m",
+            "\033[48;5;76m", "\033[48;5;28m", "\033[48;5;167m", "\033[48;5;5m", "\033[48;5;13m", "\033[48;5;9m", "\033[48;5;27m", "\033[48;5;17m", "\033[48;5;101m",
+            "\033[48;5;60m", "\033[48;5;98m", "\033[48;5;131m", "\033[48;5;53m", "\033[48;5;87m", "\033[48;5;130m", "\033[48;5;210m", "\033[48;5;238m", "\033[48;5;197m",
+            "\033[48;5;143m", "\033[48;5;202m", "\033[48;5;155m", "\033[48;5;48m", "\033[48;5;111m", "\033[48;5;105m", "\033[48;5;24m", "\033[48;5;40m", "\033[48;5;147m",
+            "\033[48;5;67m", "\033[48;5;171m", "\033[48;5;75m", "\033[48;5;61m", "\033[48;5;77m", "\033[48;5;109m", "\033[48;5;155m", "\033[48;5;226m", "\033[48;5;92m"
     };
 
     @Setter
@@ -91,19 +42,35 @@ public class ConsoleUI {
     @Autowired
     private RatingService ratingService;
 
+
     public ConsoleUI(GameField field) {
         this.field = field;
     }
 
     public void play() {
+        System.out.print("Please, enter your name: ");
+
+        String playerName = scanner.nextLine();
+        int turnsCount = 0;
+
         while (!field.isSolved() && field.getState() == GameState.PLAYING) {
             printField();
             Direction direction = handleInput();
             if (direction != null) field.moveTile(direction);
+            turnsCount++;
         }
+
         printField();
         System.out.println("Congratulations! You solved the puzzle.");
-//        scoreService.addScore(new Score("picture_sliding", "Nikita Munko", 228, new Date()));
+        scoreService.addScore(new Score("picture_sliding", playerName, 1000 - turnsCount, new Date())); /// Points = 1000 - <player turns>
+
+        System.out.print("Please, rate a game: ");
+        int gameRate = Integer.parseInt(scanner.nextLine());
+        ratingService.setRating(new Rating("picture_sliding", playerName, gameRate, new Date()));
+
+        System.out.print("Please, comment a game: ");
+        String comment = scanner.nextLine();
+        commentService.addComment(new Comment("picture_sliding", playerName, comment, new Date()));
     }
 
     private Direction handleInput() {
