@@ -22,7 +22,6 @@ public class RatingServiceJPA implements RatingService {
             if (existingRating != null) {
                 existingRating.setRating(rating.getRating());
                 existingRating.setRatedOn(rating.getRatedOn());
-                entityManager.merge(existingRating);
             }
         } catch (Exception ignored) {
             entityManager.persist(rating);
