@@ -13,7 +13,20 @@ public class RatingServiceJPA implements RatingService {
 
     @Override
     public void setRating(Rating rating) throws RatingException {
-        entityManager.merge(rating);
+        try {
+            Rating existingRating = entityManager.createNamedQuery("Rating.getRatingPlayer", Rating.class)
+                    .setParameter("game", rating.getGame())
+                    .setParameter("player", rating.getPlayer())
+                    .getSingleResult();
+
+            if (existingRating != null) {
+                existingRating.setRating(rating.getRating());
+                existingRating.setRatedOn(rating.getRatedOn());
+                entityManager.merge(existingRating);
+            }
+        } catch (Exception ignored) {
+            entityManager.persist(rating);
+        }
     }
 
     @Override
