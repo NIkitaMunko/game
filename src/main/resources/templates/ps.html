@@ -6,30 +6,28 @@
     <link rel="stylesheet" href="/css/stylesheet.css"/>
 </head>
 <body>
-<h1>Picturesliding</h1>
 
 <table class="game-field">
     <tr th:each="row, rowStat : ${field}">
         <td th:each="tile, colStat : ${row}"
-            th:class="${tile == ''} ? 'empty' : ('tile frame-' + ${frameNumbers[rowStat.index][colStat.index]})">
-            <span th:text="${tile == ''} ? '' : ${tile}"></span>
+            th:class="${tile == '0'} ? 'empty' : ('tile frame-' + ${frameNumbers[rowStat.index][colStat.index]})">
+            <span th:text="${tile == '0'} ? '' : ${tile}"></span>
         </td>
     </tr>
 </table>
 
-<!--todo rework style for this-->
 <div th:if="${isSolved}">
     <h2>Congratulations! You solved the puzzle!</h2>
 </div>
-<div th:unless="${isSolved}">
-    <h2>Game in progress</h2>
-</div>
 
-<div th:unless="${isSolved}" class="controls">
-    <a th:href="@{/picturesliding(direction='w')}">Up (W)</a>
-    <a th:href="@{/picturesliding(direction='a')}">Left (A)</a>
-    <a th:href="@{/picturesliding(direction='s')}">Down (S)</a>
-    <a th:href="@{/picturesliding(direction='d')}">Right (D)</a>
+<div class="controls">
+    <div class="control-container">
+        <a th:href="@{/picturesliding(direction='w')}" class="control-btn up"></a>
+        <a th:href="@{/picturesliding(direction='a')}" class="control-btn left"></a>
+        <a th:href="@{/picturesliding(direction='s')}" class="control-btn down"></a>
+        <a th:href="@{/picturesliding(direction='d')}" class="control-btn right"></a>
+        <a class="control-btn center"></a>
+    </div>
 </div>
 
 </body>

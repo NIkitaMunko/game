@@ -24,21 +24,23 @@ public class PictureslidingController {
         }
 
         Tile[][] fieldArray = field.getFieldArray();
-        String[][] values = new String[fieldArray.length][fieldArray[0].length];
-        int[][] frameNumbers = new int[fieldArray.length][fieldArray[0].length];
+        int rows = fieldArray.length;
+        int cols = fieldArray[0].length;
 
-        for (int i = 0; i < fieldArray.length; i++) {
-            for (int j = 0; j < fieldArray[i].length; j++) {
-                String piece = String.valueOf(fieldArray[i][j].getPiece());
-                values[i][j] = piece;
-                int pieceNumber = Integer.parseInt(piece);
-                frameNumbers[i][j] = (pieceNumber - 1) % 8 + 1;
+        String[][] values = new String[rows][cols];
+        int[][] frameNumbers = new int[rows][cols];
+
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                int pieceNumber = fieldArray[row][col].getPiece();
+
+                values[row][col] = String.valueOf(pieceNumber);
+                frameNumbers[row][col] = (pieceNumber - 1) % 8 + 1;
             }
         }
 
         model.addAttribute("field", values);
         model.addAttribute("frameNumbers", frameNumbers);
-        model.addAttribute("gameState", field.getState());
         model.addAttribute("isSolved", field.isSolved());
 
         return "ps";

@@ -40,7 +40,7 @@ body {
 }
 
 .controls a:hover {
-    background-color: lightslategray;
+    background-color: gray;
 }
 
 h1, h2 {
@@ -71,10 +71,6 @@ h1, h2 {
     width: 100px;
     height: 100px;
     background-color: #ccc;
-}
-
-ontrols {
-    margin-top: 20px;
 }
 
 .controls a {
@@ -121,4 +117,65 @@ ontrols {
 .frame-8 {
     background-image: url('/images/frames/square-frame-8.png');
     background-size: cover;
+}
+
+.controls {
+    margin-top: 20px;
+    text-align: center; /* Центрируем контейнер по ширине */
+}
+
+.control-container {
+    display: inline-block; /* Контейнер занимает только необходимую ширину */
+    position: relative; /* Для позиционирования кнопок */
+    width: 200px; /* Задаем ширину контейнера (можешь подогнать под свои нужды) */
+    height: 200px; /* Высота контейнера */
+    transform: translateX(-15px) translateY(20px);
+}
+
+.control-btn {
+    width: 60px;
+    height: 60px;
+    background-color: white; /* Белый фон кнопок */
+    display: inline-block;
+    position: absolute;
+    background-size: contain; /* Изображение полностью вписывается в кнопку */
+    background-repeat: no-repeat;
+    background-position: center;
+    text-decoration: none; /* Убираем подчеркивание */
+}
+
+/* Позиционирование кнопок */
+.up {
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url('/images/arrows/up-arrow.png');
+}
+
+.left {
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url('/images/arrows/left-arrow.png');
+}
+
+.right {
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url('/images/arrows/right-arrow.png');
+}
+
+.down {
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url('/images/arrows/down-arrow.png');
+}
+
+.center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url('/images/arrows/reload-arrow.png');
 }
