@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Picturesliding</title>
+    <link rel="stylesheet" href="/css/stylesheet.css"/>
+</head>
+<body>
+<h1>Picturesliding</h1>
+
+<table class="game-field">
+    <tr th:each="row : ${field}">
+        <td th:each="tile : ${row}" th:class="${tile.piece == ''} ? 'empty' : 'tile'">
+            <span th:text="${tile.piece}"></span>
+        </td>
+    </tr>
+</table>
+
+<div th:if="${isSolved}">
+    <h2>Congratulations! You solved the puzzle!</h2>
+</div>
+<div th:unless="${isSolved}">
+    <h2>Game in progress</h2>
+</div>
+
+<div th:unless="${isSolved}" class="controls">
+    <a th:href="@{/picturesliding(direction='w')}">Up (W)</a>
+    <a th:href="@{/picturesliding(direction='a')}">Left (A)</a>
+    <a th:href="@{/picturesliding(direction='s')}">Down (S)</a>
+    <a th:href="@{/picturesliding(direction='d')}">Right (D)</a>
+</div>
+
+</body>
+</html>
