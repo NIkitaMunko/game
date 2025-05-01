@@ -50,7 +50,6 @@ buildNumber.properties
 *.asp
 *.cer
 *.csr
-*.css
 *.htm
 *.html
 *.js
