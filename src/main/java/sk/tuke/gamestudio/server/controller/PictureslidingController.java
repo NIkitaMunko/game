@@ -14,7 +14,7 @@ import sk.tuke.gamestudio.picturesliding.core.Tile;
 @Scope(WebApplicationContext.SCOPE_SESSION)
 public class PictureslidingController {
 
-    private GameField field = new GameField(3, 3);
+    private GameField field = new GameField(2, 2);
 
     @RequestMapping("/picturesliding")
     public String picturesliding(@RequestParam(value = "direction", required = false) String direction, Model model) {
@@ -22,6 +22,8 @@ public class PictureslidingController {
             Direction dir = Direction.getDirection(direction.toLowerCase());
             if (dir != null) field.moveTile(dir);
         }
+
+        // todo добавить поддержку взаимодействия с датабазой и её вывод на сайт
 
         Tile[][] fieldArray = field.getFieldArray();
         int rows = fieldArray.length;
@@ -43,6 +45,6 @@ public class PictureslidingController {
         model.addAttribute("frameNumbers", frameNumbers);
         model.addAttribute("isSolved", field.isSolved());
 
-        return "ps";
+        return "ps"; // todo сделать чтобы сайт каждый раз сам не перерисовывался
     }
 }

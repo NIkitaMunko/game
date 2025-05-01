@@ -4,18 +4,14 @@ body {
     background-position: center;
 }
 
+h1, h2 {
+    text-align: center;
+}
+
+
 .game-field {
     border-collapse: collapse;
     margin: 20px auto;
-}
-
-.tile {
-    width: 60px;
-    height: 60px;
-    border: 1px solid #000;
-    text-align: center;
-    font-size: 20px;
-    background-color: #f0f0f0;
 }
 
 .empty {
@@ -25,41 +21,17 @@ body {
     background-color: #ccc;
 }
 
-.controls {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.controls a {
-    margin: 0 10px;
-    text-decoration: none;
-    padding: 10px;
-    background-color: white;
-    color: black;
-    border-radius: 5px;
-}
-
-.controls a:hover {
-    background-color: gray;
-}
-
-h1, h2 {
-    text-align: center;
-}
-
-.game-field {
-    border-collapse: collapse;
-}
-
 .tile {
     width: 100px;
     height: 100px;
+    position: relative;
     text-align: center;
     vertical-align: middle;
     font-size: 24px;
     font-weight: bold;
     color: white;
-    position: relative;
+    border: 1px solid #000;
+    background-color: #f0f0f0;
 }
 
 .tile span {
@@ -67,17 +39,6 @@ h1, h2 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.empty {
-    width: 100px;
-    height: 100px;
-    background-color: #ccc;
-}
-
-.controls a {
-    margin: 0 10px;
-    text-decoration: none;
-    font-size: 18px;
-}
 
 .frame-1 {
     background-image: url('/images/frames/square-frame-1.png');
@@ -117,65 +78,4 @@ h1, h2 {
 .frame-8 {
     background-image: url('/images/frames/square-frame-8.png');
     background-size: cover;
-}
-
-.controls {
-    margin-top: 20px;
-    text-align: center; /* Центрируем контейнер по ширине */
-}
-
-.control-container {
-    display: inline-block; /* Контейнер занимает только необходимую ширину */
-    position: relative; /* Для позиционирования кнопок */
-    width: 200px; /* Задаем ширину контейнера (можешь подогнать под свои нужды) */
-    height: 200px; /* Высота контейнера */
-    transform: translateX(-15px) translateY(20px);
-}
-
-.control-btn {
-    width: 60px;
-    height: 60px;
-    background-color: white; /* Белый фон кнопок */
-    display: inline-block;
-    position: absolute;
-    background-size: contain; /* Изображение полностью вписывается в кнопку */
-    background-repeat: no-repeat;
-    background-position: center;
-    text-decoration: none; /* Убираем подчеркивание */
-}
-
-/* Позиционирование кнопок */
-.up {
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-image: url('/images/arrows/up-arrow.png');
-}
-
-.left {
-    left: -20px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-image: url('/images/arrows/left-arrow.png');
-}
-
-.right {
-    right: -40px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-image: url('/images/arrows/right-arrow.png');
-}
-
-.down {
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-image: url('/images/arrows/down-arrow.png');
-}
-
-.center {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-image: url('/images/arrows/reload-arrow.png');
 }

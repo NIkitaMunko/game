@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Picturesliding</title>
     <link rel="stylesheet" href="/css/stylesheet.css"/>
+    <link rel="stylesheet" href="/css/buttons.css"/>
 </head>
 <body>
 
@@ -16,6 +17,7 @@
     </tr>
 </table>
 
+<!--todo нормально стилизовать тексты-->
 <div th:if="${isSolved}">
     <h2>Congratulations! You solved the puzzle!</h2>
 </div>
@@ -26,9 +28,11 @@
         <a th:href="@{/picturesliding(direction='a')}" class="control-btn left"></a>
         <a th:href="@{/picturesliding(direction='s')}" class="control-btn down"></a>
         <a th:href="@{/picturesliding(direction='d')}" class="control-btn right"></a>
-        <a class="control-btn center"></a>
+        <a class="control-btn center"></a> <!--todo доделать кнопку перезагрузки-->
     </div>
 </div>
 
 </body>
 </html>
+
+<!--todo сделать поддержку мобильных устройств-->
