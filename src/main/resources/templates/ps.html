@@ -9,13 +9,15 @@
 <h1>Picturesliding</h1>
 
 <table class="game-field">
-    <tr th:each="row : ${field}">
-        <td th:each="tile : ${row}" th:class="${tile.piece == ''} ? 'empty' : 'tile'">
-            <span th:text="${tile.piece}"></span>
+    <tr th:each="row, rowStat : ${field}">
+        <td th:each="tile, colStat : ${row}"
+            th:class="${tile == ''} ? 'empty' : ('tile frame-' + ${frameNumbers[rowStat.index][colStat.index]})">
+            <span th:text="${tile == ''} ? '' : ${tile}"></span>
         </td>
     </tr>
 </table>
 
+<!--todo rework style for this-->
 <div th:if="${isSolved}">
     <h2>Congratulations! You solved the puzzle!</h2>
 </div>

@@ -1,3 +1,9 @@
+body {
+    background-image: url('/images/back-ground.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
 .game-field {
     border-collapse: collapse;
     margin: 20px auto;
@@ -28,15 +34,91 @@
     margin: 0 10px;
     text-decoration: none;
     padding: 10px;
-    background-color: #007bff;
-    color: white;
+    background-color: white;
+    color: black;
     border-radius: 5px;
 }
 
 .controls a:hover {
-    background-color: #0056b3;
+    background-color: lightslategray;
 }
 
 h1, h2 {
     text-align: center;
+}
+
+.game-field {
+    border-collapse: collapse;
+}
+
+.tile {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    position: relative;
+}
+
+.tile span {
+    color: black;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.empty {
+    width: 100px;
+    height: 100px;
+    background-color: #ccc;
+}
+
+ontrols {
+    margin-top: 20px;
+}
+
+.controls a {
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.frame-1 {
+    background-image: url('/images/frames/square-frame-1.png');
+    background-size: cover;
+}
+
+.frame-2 {
+    background-image: url('/images/frames/square-frame-2.png');
+    background-size: cover;
+}
+
+.frame-3 {
+    background-image: url('/images/frames/square-frame-3.png');
+    background-size: cover;
+}
+
+.frame-4 {
+    background-image: url('/images/frames/square-frame-4.png');
+    background-size: cover;
+}
+
+.frame-5 {
+    background-image: url('/images/frames/square-frame-5.png');
+    background-size: cover;
+}
+
+.frame-6 {
+    background-image: url('/images/frames/square-frame-6.png');
+    background-size: cover;
+}
+
+.frame-7 {
+    background-image: url('/images/frames/square-frame-7.png');
+    background-size: cover;
+}
+
+.frame-8 {
+    background-image: url('/images/frames/square-frame-8.png');
+    background-size: cover;
 }
