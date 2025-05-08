@@ -5,6 +5,7 @@
     <title>Picturesliding</title>
     <link rel="stylesheet" href="/css/stylesheet.css"/>
     <link rel="stylesheet" href="/css/buttons.css"/>
+    <link rel="stylesheet" href="/css/comments.css"/>
 </head>
 <body>
 
@@ -29,6 +30,14 @@
         <a th:href="@{/picturesliding(direction='s')}" class="control-btn down"></a>
         <a th:href="@{/picturesliding(direction='d')}" class="control-btn right"></a>
         <a th:href="@{/picturesliding(reset=true)}" class="control-btn center"></a>
+    </div>
+</div>
+
+<div class="comments">
+    <h3>Comments</h3>
+    <div class="comment-container">
+        <div th:each="comment : ${comments}" class="comment-entry"
+             th:text="${comment.player + ': ' + comment.comment}">Player: Comment</div>
     </div>
 </div>
 
