@@ -1,0 +1,52 @@
+.rating {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 300px;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+
+.rating h4 {
+    margin-top: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.rating-form {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.rating-form label {
+    font-weight: 600;
+}
+
+.rating-form input[type="text"],
+.rating-form input[type="number"] {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.rating-form input[type="submit"] {
+    padding: 8px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.rating-form input[type="submit"]:hover {
+    background-color: #0056b3;
+}

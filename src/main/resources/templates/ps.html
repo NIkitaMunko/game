@@ -5,7 +5,8 @@
     <title>Picturesliding</title>
     <link rel="stylesheet" href="/css/stylesheet.css"/>
     <link rel="stylesheet" href="/css/buttons.css"/>
-    <link rel="stylesheet" href="/css/comments.css"/>
+    <link rel="stylesheet" href="/css/services/comments.css"/>
+    <link rel="stylesheet" href="/css/services/rating.css"/>
     <link rel="stylesheet" href="/css/formStyle.css"/>
 </head>
 <body>
@@ -54,8 +55,19 @@
         <form th:action="@{/picturesliding}" method="get" class="comment-form">
             <input type="hidden" name="playerName" th:value="${playerName}"/>
             <br>
-            <label for="comment">Please, comment on the game:</label>
+            <label for="comment">Please, comment the game:</label>
             <input type="text" id="comment" name="comment" required>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div class="rating">
+        <h4>Avg. rating: <span th:text="${rating}">0.0</span></h4>
+
+        <form th:action="@{/picturesliding}" method="get" class="rating-form">
+            <input type="hidden" name="playerName" th:value="${playerName}"/>
+            <label for="rating">Please, rate the game (1-10):</label>
+            <input type="number" id="rating" name="rating" min="1" max="10" required>
             <input type="submit" value="Submit">
         </form>
     </div>
