@@ -6,38 +6,50 @@
     <link rel="stylesheet" href="/css/stylesheet.css"/>
     <link rel="stylesheet" href="/css/buttons.css"/>
     <link rel="stylesheet" href="/css/comments.css"/>
+    <link rel="stylesheet" href="/css/formStyle.css"/>
 </head>
 <body>
 
-<table class="game-field">
-    <tr th:each="row, rowStat : ${field}">
-        <td th:each="tile, colStat : ${row}"
-            th:class="${tile == '0'} ? 'empty' : ('tile frame-' + ${frameNumbers[rowStat.index][colStat.index]})">
-            <span th:text="${tile == '0'} ? '' : ${tile}"></span>
-        </td>
-    </tr>
-</table>
-
-<!--todo нормально стилизовать тексты-->
-<div th:if="${isSolved}">
-    <h2>Congratulations! You solved the puzzle!</h2>
+<div class="form-container" th:if="${playerName == null}">
+    <form th:action="@{/picturesliding}" method="get">
+        <label for="playerName">Please, enter your name:</label>
+        <input type="text" id="playerName" name="playerName" required>
+        <button type="submit">Start</button>
+    </form>
 </div>
 
-<div class="controls">
-    <div class="control-container">
-        <a th:href="@{/picturesliding(direction='w')}" class="control-btn up"></a>
-        <a th:href="@{/picturesliding(direction='a')}" class="control-btn left"></a>
-        <a th:href="@{/picturesliding(direction='s')}" class="control-btn down"></a>
-        <a th:href="@{/picturesliding(direction='d')}" class="control-btn right"></a>
-        <a th:href="@{/picturesliding(reset=true)}" class="control-btn center"></a>
+<div th:if="${playerName != null}">
+    <table class="game-field">
+        <tr th:each="row, rowStat : ${field}">
+            <td th:each="tile, colStat : ${row}"
+                th:class="${tile == '0'} ? 'empty' : ('tile frame-' + ${frameNumbers[rowStat.index][colStat.index]})">
+                <span th:text="${tile == '0'} ? '' : ${tile}"></span>
+            </td>
+        </tr>
+    </table>
+
+    <!--todo нормально стилизовать тексты-->
+    <div th:if="${isSolved}">
+        <h2>Congratulations! You solved the puzzle!</h2>
     </div>
-</div>
 
-<div class="comments">
-    <h3>Comments</h3>
-    <div class="comment-container">
-        <div th:each="comment : ${comments}" class="comment-entry"
-             th:text="${comment.player + ': ' + comment.comment}">Player: Comment</div>
+    <div class="controls">
+        <div class="control-container">
+            <a th:href="@{/picturesliding(direction='w')}" class="control-btn up"></a>
+            <a th:href="@{/picturesliding(direction='a')}" class="control-btn left"></a>
+            <a th:href="@{/picturesliding(direction='s')}" class="control-btn down"></a>
+            <a th:href="@{/picturesliding(direction='d')}" class="control-btn right"></a>
+            <a th:href="@{/picturesliding(reset=true)}" class="control-btn center"></a>
+        </div>
+    </div>
+
+    <div class="comments">
+        <h3>Comments</h3>
+        <div class="comment-container">
+            <div th:each="comment : ${comments}" class="comment-entry"
+                 th:text="${comment.player + ': ' + comment.comment}">Player: Comment
+            </div>
+        </div>
     </div>
 </div>
 

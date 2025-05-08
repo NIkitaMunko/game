@@ -20,6 +20,7 @@ import java.util.List;
 public class PictureslidingController {
 
     private GameField field = new GameField(3, 3);
+    private String playerName;
 
     @Autowired
     private CommentService commentService;
@@ -28,8 +29,11 @@ public class PictureslidingController {
     public String picturesliding(
             @RequestParam(value = "direction", required = false) String direction,
             @RequestParam(value = "reset", required = false) boolean reset,
+            @RequestParam(value = "playerName", required = false) String inputPlayerName,
             Model model
     ) {
+
+        if (inputPlayerName != null && !inputPlayerName.isBlank()) this.playerName = inputPlayerName;
 
         if (reset) {
             field = new GameField(3, 3);
@@ -60,6 +64,7 @@ public class PictureslidingController {
         model.addAttribute("frameNumbers", frameNumbers);
         model.addAttribute("isSolved", field.isSolved());
         model.addAttribute("comments", commentService.getComments("picture_sliding"));
+        model.addAttribute("playerName", this.playerName);
 
         return "ps"; // todo сделать чтобы сайт каждый раз сам не перерисовывался
     }
