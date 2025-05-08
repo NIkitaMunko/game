@@ -13,7 +13,7 @@ import sk.tuke.gamestudio.picturesliding.core.GameField;
 import sk.tuke.gamestudio.picturesliding.core.Tile;
 import sk.tuke.gamestudio.service.CommentService;
 
-import java.util.List;
+import java.util.Date;
 
 @Controller
 @Scope(WebApplicationContext.SCOPE_SESSION)
@@ -30,10 +30,14 @@ public class PictureslidingController {
             @RequestParam(value = "direction", required = false) String direction,
             @RequestParam(value = "reset", required = false) boolean reset,
             @RequestParam(value = "playerName", required = false) String inputPlayerName,
+            @RequestParam(value = "comment", required = false) String comment,
             Model model
     ) {
 
         if (inputPlayerName != null && !inputPlayerName.isBlank()) this.playerName = inputPlayerName;
+
+        if (comment != null && playerName != null)
+            commentService.addComment(new Comment("picture_sliding", playerName, comment, new Date()));
 
         if (reset) {
             field = new GameField(3, 3);

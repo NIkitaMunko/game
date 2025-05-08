@@ -50,6 +50,14 @@
                  th:text="${comment.player + ': ' + comment.comment}">Player: Comment
             </div>
         </div>
+
+        <form th:action="@{/picturesliding}" method="get" class="comment-form">
+            <input type="hidden" name="playerName" th:value="${playerName}"/>
+            <br>
+            <label for="comment">Please, comment on the game:</label>
+            <input type="text" id="comment" name="comment" required>
+            <input type="submit" value="Submit">
+        </form>
     </div>
 </div>
 
