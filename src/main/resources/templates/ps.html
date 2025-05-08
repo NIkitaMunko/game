@@ -28,7 +28,7 @@
         <a th:href="@{/picturesliding(direction='a')}" class="control-btn left"></a>
         <a th:href="@{/picturesliding(direction='s')}" class="control-btn down"></a>
         <a th:href="@{/picturesliding(direction='d')}" class="control-btn right"></a>
-        <a class="control-btn center"></a> <!--todo доделать кнопку перезагрузки-->
+        <a th:href="@{/picturesliding(reset=true)}" class="control-btn center"></a>
     </div>
 </div>
 

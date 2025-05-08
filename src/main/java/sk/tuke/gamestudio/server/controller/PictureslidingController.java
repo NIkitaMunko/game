@@ -14,10 +14,17 @@ import sk.tuke.gamestudio.picturesliding.core.Tile;
 @Scope(WebApplicationContext.SCOPE_SESSION)
 public class PictureslidingController {
 
-    private GameField field = new GameField(2, 2);
+    private GameField field = new GameField(3, 3);
 
     @RequestMapping("/picturesliding")
-    public String picturesliding(@RequestParam(value = "direction", required = false) String direction, Model model) {
+    public String picturesliding(
+            @RequestParam(value = "direction", required = false) String direction,
+            @RequestParam(value = "reset", required = false) boolean reset,
+            Model model
+    ) {
+
+        if (reset) field = new GameField(3, 3);
+
         if (direction != null && !direction.isEmpty()) {
             Direction dir = Direction.getDirection(direction.toLowerCase());
             if (dir != null) field.moveTile(dir);
