@@ -82,6 +82,7 @@ public class PictureslidingController {
         model.addAttribute("isSolved", field.isSolved());
         model.addAttribute("comments", commentService.getComments("picture_sliding"));
         model.addAttribute("rating", ratingService.getAverageRating("picture_sliding"));
+        model.addAttribute("player_rating", ratingService.getRating("picture_sliding", playerName));
         model.addAttribute("playerName", this.playerName);
 
         return "ps"; // todo сделать чтобы сайт каждый раз сам не перерисовывался

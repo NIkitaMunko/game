@@ -39,7 +39,7 @@
 
 .rating-form input[type="submit"] {
     padding: 8px;
-    background-color: #007bff;
+    background-color: #2f342f;
     color: white;
     border: none;
     border-radius: 5px;
@@ -48,5 +48,5 @@
 }
 
 .rating-form input[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #000000;
 }

@@ -55,7 +55,7 @@
 
 .comment-form input[type="submit"] {
     padding: 8px;
-    background-color: #28a745;
+    background-color: #2f342f;
     color: white;
     border: none;
     border-radius: 5px;
@@ -64,5 +64,5 @@
 }
 
 .comment-form input[type="submit"]:hover {
-    background-color: #218838;
+    background-color: #000000;
 }
