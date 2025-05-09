@@ -23,8 +23,8 @@ h1, h2 {
 }
 
 .tile {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     position: relative;
     text-align: center;
     vertical-align: middle;
@@ -42,41 +42,41 @@ h1, h2 {
 
 
 .frame-1 {
-    background-image: url('/images/frames/square-frame-1.png');
+    background-image: url('/images/cute_cat/image_part_001.jpg');
     background-size: cover;
 }
 
 .frame-2 {
-    background-image: url('/images/frames/square-frame-2.png');
+    background-image: url('/images/cute_cat/image_part_002.jpg');
     background-size: cover;
 }
 
 .frame-3 {
-    background-image: url('/images/frames/square-frame-3.png');
+    background-image: url('/images/cute_cat/image_part_003.jpg');
     background-size: cover;
 }
 
 .frame-4 {
-    background-image: url('/images/frames/square-frame-4.png');
+    background-image: url('/images/cute_cat/image_part_004.jpg');
     background-size: cover;
 }
 
 .frame-5 {
-    background-image: url('/images/frames/square-frame-5.png');
+    background-image: url('/images/cute_cat/image_part_005.jpg');
     background-size: cover;
 }
 
 .frame-6 {
-    background-image: url('/images/frames/square-frame-6.png');
+    background-image: url('/images/cute_cat/image_part_006.jpg');
     background-size: cover;
 }
 
 .frame-7 {
-    background-image: url('/images/frames/square-frame-7.png');
+    background-image: url('/images/cute_cat/image_part_007.jpg');
     background-size: cover;
 }
 
 .frame-8 {
-    background-image: url('/images/frames/square-frame-8.png');
+    background-image: url('/images/cute_cat/image_part_008.jpg');
     background-size: cover;
 }
