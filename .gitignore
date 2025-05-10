@@ -52,7 +52,6 @@ buildNumber.properties
 *.csr
 *.htm
 *.html
-*.js
 *.jsp
 *.php
 *.rss
