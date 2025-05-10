@@ -4,8 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.WebApplicationContext;
 import sk.tuke.gamestudio.entity.Comment;
 import sk.tuke.gamestudio.entity.Rating;
@@ -16,8 +15,13 @@ import sk.tuke.gamestudio.service.CommentService;
 import sk.tuke.gamestudio.service.RatingService;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Logger;
 
-@Controller
+@RestController
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api/picturesliding")
 @Scope(WebApplicationContext.SCOPE_SESSION)
 public class PictureslidingController {
 
@@ -30,14 +34,13 @@ public class PictureslidingController {
     @Autowired
     private RatingService ratingService;
 
-    @RequestMapping("/picturesliding")
-    public String picturesliding(
+    @GetMapping
+    public Map<String, Object> getGameState(
             @RequestParam(value = "direction", required = false) String direction,
             @RequestParam(value = "reset", required = false) boolean reset,
             @RequestParam(value = "playerName", required = false) String inputPlayerName,
             @RequestParam(value = "comment", required = false) String comment,
-            @RequestParam(value = "rating", required = false) String rating,
-            Model model
+            @RequestParam(value = "rating", required = false) String rating
     ) {
 
         if (inputPlayerName != null && !inputPlayerName.isBlank()) this.playerName = inputPlayerName;
@@ -49,9 +52,7 @@ public class PictureslidingController {
             try {
                 int gameRate = Integer.parseInt(rating);
                 ratingService.setRating(new Rating("picture_sliding", playerName, gameRate, new Date()));
-            } catch (NumberFormatException e) {
-                model.addAttribute("error", "Invalid rating value.");
-            }
+            } catch (NumberFormatException ignored) {}
         }
 
         if (reset) {
@@ -77,14 +78,17 @@ public class PictureslidingController {
             }
         }
 
-        model.addAttribute("field", values);
-        model.addAttribute("frameNumbers", frameNumbers);
-        model.addAttribute("isSolved", field.isSolved());
-        model.addAttribute("comments", commentService.getComments("picture_sliding"));
-        model.addAttribute("rating", ratingService.getAverageRating("picture_sliding"));
-        model.addAttribute("player_rating", ratingService.getRating("picture_sliding", playerName));
-        model.addAttribute("playerName", this.playerName);
+        Map<String, Object> response = new HashMap<>();
+        response.put("field", values);
+        response.put("frameNumbers", frameNumbers);
+        response.put("isSolved", field.isSolved());
+        response.put("comments", commentService.getComments("picture_sliding"));
+        response.put("rating", ratingService.getAverageRating("picture_sliding"));
+        response.put("player_rating", ratingService.getRating("picture_sliding", playerName));
+        response.put("playerName", playerName);
 
-        return "ps"; // todo сделать чтобы сайт каждый раз сам не перерисовывался
+        System.out.println("Player name send: " + playerName);
+
+        return response;
     }
 }
