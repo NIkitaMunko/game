@@ -1,7 +1,7 @@
 package sk.tuke.gamestudio.picturesliding.core;
 
 public class Tile {
-    private final int picturePiece;
+    private int picturePiece;
 
     public Tile(int value) {
         this.picturePiece = value;
@@ -9,6 +9,10 @@ public class Tile {
 
     public int getPiece() {
         return picturePiece;
+    }
+
+    public void setPiece(int value) {
+        picturePiece = value;
     }
 
     public boolean isEmpty() {

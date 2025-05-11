@@ -25,7 +25,6 @@ import java.util.logging.Logger;
 @Scope(WebApplicationContext.SCOPE_SESSION)
 public class PictureslidingController {
 
-    private GameField field = new GameField(3, 3);
     private String playerName;
 
     @Autowired
@@ -34,16 +33,24 @@ public class PictureslidingController {
     @Autowired
     private RatingService ratingService;
 
-    @GetMapping
+    @PostMapping
     public Map<String, Object> getGameState(
             @RequestParam(value = "direction", required = false) String direction,
             @RequestParam(value = "reset", required = false) boolean reset,
             @RequestParam(value = "playerName", required = false) String inputPlayerName,
             @RequestParam(value = "comment", required = false) String comment,
-            @RequestParam(value = "rating", required = false) String rating
+            @RequestParam(value = "rating", required = false) String rating,
+            @RequestBody(required = false) Map<String, String[][]> body
     ) {
 
         if (inputPlayerName != null && !inputPlayerName.isBlank()) this.playerName = inputPlayerName;
+
+        GameField field;
+        if (reset || body == null || body.get("field") == null) {
+            field = new GameField(3, 3);
+        } else {
+            field = createGameFieldFromJson(body.get("field"));
+        }
 
         if (comment != null && !comment.isBlank() && playerName != null)
             commentService.addComment(new Comment("picture_sliding", playerName, comment, new Date()));
@@ -55,9 +62,7 @@ public class PictureslidingController {
             } catch (NumberFormatException ignored) {}
         }
 
-        if (reset) {
-            field = new GameField(3, 3);
-        } else if (direction != null && !direction.isEmpty()) {
+        if (!reset && direction != null && !direction.isEmpty()) {
             Direction dir = Direction.getDirection(direction.toLowerCase());
             if (dir != null) field.moveTile(dir);
         }
@@ -88,5 +93,21 @@ public class PictureslidingController {
         response.put("playerName", playerName);
 
         return response;
+    }
+
+    private GameField createGameFieldFromJson(String[][] fieldValues) {
+        int rows = fieldValues.length;
+        int cols = fieldValues[0].length;
+        GameField field = new GameField(rows, cols);
+
+        Tile[][] fieldArray = field.getFieldArray();
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                int pieceNumber = Integer.parseInt(fieldValues[row][col]);
+                fieldArray[row][col].setPiece(pieceNumber);
+            }
+        }
+
+        return field;
     }
 }
