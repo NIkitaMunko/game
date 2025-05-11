@@ -6,11 +6,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.WebApplicationContext;
 import sk.tuke.gamestudio.entity.Comment;
 import sk.tuke.gamestudio.entity.Rating;
+import sk.tuke.gamestudio.entity.Score;
 import sk.tuke.gamestudio.picturesliding.core.Direction;
 import sk.tuke.gamestudio.picturesliding.core.GameField;
 import sk.tuke.gamestudio.picturesliding.core.Tile;
 import sk.tuke.gamestudio.service.CommentService;
 import sk.tuke.gamestudio.service.RatingService;
+import sk.tuke.gamestudio.service.ScoreService;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -30,6 +32,9 @@ public class PictureslidingControllerAngular {
     @Autowired
     private RatingService ratingService;
 
+    @Autowired
+    private ScoreService scoreService;
+
     @PostMapping
     public Map<String, Object> getGameState(
             @RequestParam(value = "direction", required = false) String direction,
@@ -37,6 +42,7 @@ public class PictureslidingControllerAngular {
             @RequestParam(value = "playerName", required = false) String inputPlayerName,
             @RequestParam(value = "comment", required = false) String comment,
             @RequestParam(value = "rating", required = false) String rating,
+            @RequestParam(value = "score", required = false) String score,
             @RequestBody(required = false) Map<String, String[][]> body
     ) {
 
@@ -56,7 +62,17 @@ public class PictureslidingControllerAngular {
             try {
                 int gameRate = Integer.parseInt(rating);
                 ratingService.setRating(new Rating("picture_sliding", playerName, gameRate, new Date()));
-            } catch (NumberFormatException ignored) {}
+            } catch (NumberFormatException ignored) {
+            }
+        }
+
+        if (score != null && playerName != null) {
+            try {
+                int playerScore = Integer.parseInt(score);
+                if (playerScore != 1000)
+                    scoreService.addScore(new Score("picture_sliding", playerName, playerScore, new Date()));
+            } catch (NumberFormatException ignored) {
+            }
         }
 
         if (!reset && direction != null && !direction.isEmpty()) {
@@ -85,6 +101,7 @@ public class PictureslidingControllerAngular {
         response.put("frameNumbers", frameNumbers);
         response.put("isSolved", field.isSolved());
         response.put("comments", commentService.getComments("picture_sliding"));
+        response.put("scores", scoreService.getTopScores("picture_sliding"));
         response.put("rating", ratingService.getAverageRating("picture_sliding"));
         response.put("player_rating", ratingService.getRating("picture_sliding", playerName));
         response.put("playerName", playerName);
