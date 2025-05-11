@@ -45,7 +45,7 @@ public class PictureslidingController {
 
         if (inputPlayerName != null && !inputPlayerName.isBlank()) this.playerName = inputPlayerName;
 
-        if (comment != null && playerName != null)
+        if (comment != null && !comment.isBlank() && playerName != null)
             commentService.addComment(new Comment("picture_sliding", playerName, comment, new Date()));
 
         if (rating != null && playerName != null) {
@@ -86,8 +86,6 @@ public class PictureslidingController {
         response.put("rating", ratingService.getAverageRating("picture_sliding"));
         response.put("player_rating", ratingService.getRating("picture_sliding", playerName));
         response.put("playerName", playerName);
-
-        System.out.println("Player name send: " + playerName);
 
         return response;
     }
