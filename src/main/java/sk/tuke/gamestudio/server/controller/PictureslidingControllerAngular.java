@@ -58,37 +58,27 @@ public class PictureslidingControllerAngular {
             if (inputPlayerName.equals("guest")) {
                 playerName = inputPlayerName;
             } else {
-                System.out.println("Player " + inputPlayerName + " attempting to log in.");
-
                 List<Player> players = playerService.getPlayers();
                 boolean playerFound = false;
 
                 for (Player player : players) {
                     if (player.getName().equals(inputPlayerName)) {
-                        System.out.println("Player " + inputPlayerName + " found in the database.");
                         playerFound = true;
 
                         if (player.getPassword().equals(inputPlayerPass)) {
-                            System.out.println("Password for player " + inputPlayerName + " matched.");
                             playerName = inputPlayerName;
                             playerPass = inputPlayerPass;
-                        } else {
-                            System.out.println("Password mismatch for player " + inputPlayerName + ".");
                         }
                         break;
                     }
                 }
 
                 if (!playerFound) {
-                    System.out.println("Player " + inputPlayerName + " not found. Adding to the database.");
                     playerService.addPlayer(new Player(inputPlayerName, inputPlayerPass));
                     playerName = inputPlayerName;
                     playerPass = inputPlayerPass;
-                    System.out.println("Player " + inputPlayerName + " successfully added.");
                 }
             }
-        } else {
-            System.out.println("Player name is null or guest. Skipping authentication.");
         }
 
         GameField field;
