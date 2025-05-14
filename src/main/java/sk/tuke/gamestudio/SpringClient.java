@@ -67,4 +67,10 @@ public class SpringClient {
 //        return new RatingServiceJPA();
         return new RatingServiceRestClient();
     }
+
+    @Bean
+    public PlayerService playerService() {
+//        return new RatingServiceJPA();
+        return new PlayerServiceRestClient();
+    }
 }

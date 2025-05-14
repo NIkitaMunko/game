@@ -29,4 +29,9 @@ public class GameStudioServer {
     public RatingService ratingService() {
         return new RatingServiceJPA();
     }
+
+    @Bean
+    public PlayerService playerService() {
+        return new PlayerServiceJPA();
+    }
 }

@@ -5,17 +5,20 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.WebApplicationContext;
 import sk.tuke.gamestudio.entity.Comment;
+import sk.tuke.gamestudio.entity.Player;
 import sk.tuke.gamestudio.entity.Rating;
 import sk.tuke.gamestudio.entity.Score;
 import sk.tuke.gamestudio.picturesliding.core.Direction;
 import sk.tuke.gamestudio.picturesliding.core.GameField;
 import sk.tuke.gamestudio.picturesliding.core.Tile;
 import sk.tuke.gamestudio.service.CommentService;
+import sk.tuke.gamestudio.service.PlayerService;
 import sk.tuke.gamestudio.service.RatingService;
 import sk.tuke.gamestudio.service.ScoreService;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -35,18 +38,55 @@ public class PictureslidingControllerAngular {
     @Autowired
     private ScoreService scoreService;
 
+    @Autowired
+    private PlayerService playerService;
+
     @PostMapping
     public Map<String, Object> getGameState(
             @RequestParam(value = "direction", required = false) String direction,
             @RequestParam(value = "reset", required = false) boolean reset,
             @RequestParam(value = "playerName", required = false) String inputPlayerName,
+            @RequestParam(value = "playerPass", required = false) String inputPlayerPass,
             @RequestParam(value = "comment", required = false) String comment,
             @RequestParam(value = "rating", required = false) String rating,
             @RequestParam(value = "score", required = false) String score,
             @RequestBody(required = false) Map<String, String[][]> body
     ) {
 
-        if (inputPlayerName != null && !inputPlayerName.isBlank()) this.playerName = inputPlayerName;
+        if (inputPlayerName != null && !inputPlayerName.isBlank()) {
+            if (inputPlayerName.equals("guest")) {
+                playerName = inputPlayerName;
+            } else {
+                System.out.println("Player " + inputPlayerName + " attempting to log in.");
+
+                List<Player> players = playerService.getPlayers();
+                boolean playerFound = false;
+
+                for (Player player : players) {
+                    if (player.getName().equals(inputPlayerName)) {
+                        System.out.println("Player " + inputPlayerName + " found in the database.");
+                        playerFound = true;
+
+                        if (player.getPassword().equals(inputPlayerPass)) {
+                            System.out.println("Password for player " + inputPlayerName + " matched.");
+                            playerName = inputPlayerName;
+                        } else {
+                            System.out.println("Password mismatch for player " + inputPlayerName + ".");
+                        }
+                        break;
+                    }
+                }
+
+                if (!playerFound) {
+                    System.out.println("Player " + inputPlayerName + " not found. Adding to the database.");
+                    playerService.addPlayer(new Player(inputPlayerName, inputPlayerPass));
+                    playerName = inputPlayerName;
+                    System.out.println("Player " + inputPlayerName + " successfully added.");
+                }
+            }
+        } else {
+            System.out.println("Player name is null or guest. Skipping authentication.");
+        }
 
         GameField field;
         if (reset || body == null || body.get("field") == null) {
@@ -55,10 +95,10 @@ public class PictureslidingControllerAngular {
             field = createGameFieldFromJson(body.get("field"));
         }
 
-        if (comment != null && !comment.isBlank() && playerName != null)
+        if (comment != null && !comment.isBlank() && playerName != null && !playerName.equals("guest"))
             commentService.addComment(new Comment("picture_sliding", playerName, comment, new Date()));
 
-        if (rating != null && playerName != null) {
+        if (rating != null && playerName != null && !playerName.equals("guest")) {
             try {
                 int gameRate = Integer.parseInt(rating);
                 ratingService.setRating(new Rating("picture_sliding", playerName, gameRate, new Date()));
@@ -66,7 +106,7 @@ public class PictureslidingControllerAngular {
             }
         }
 
-        if (score != null && playerName != null) {
+        if (score != null && playerName != null && !playerName.equals("guest")) {
             try {
                 int playerScore = Integer.parseInt(score);
                 if (playerScore != 1000)
