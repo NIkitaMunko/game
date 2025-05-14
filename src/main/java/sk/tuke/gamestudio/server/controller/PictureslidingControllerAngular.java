@@ -28,6 +28,7 @@ import java.util.Map;
 public class PictureslidingControllerAngular {
 
     private String playerName;
+    private String playerPass;
 
     @Autowired
     private CommentService commentService;
@@ -70,6 +71,7 @@ public class PictureslidingControllerAngular {
                         if (player.getPassword().equals(inputPlayerPass)) {
                             System.out.println("Password for player " + inputPlayerName + " matched.");
                             playerName = inputPlayerName;
+                            playerPass = inputPlayerPass;
                         } else {
                             System.out.println("Password mismatch for player " + inputPlayerName + ".");
                         }
@@ -81,6 +83,7 @@ public class PictureslidingControllerAngular {
                     System.out.println("Player " + inputPlayerName + " not found. Adding to the database.");
                     playerService.addPlayer(new Player(inputPlayerName, inputPlayerPass));
                     playerName = inputPlayerName;
+                    playerPass = inputPlayerPass;
                     System.out.println("Player " + inputPlayerName + " successfully added.");
                 }
             }
@@ -145,6 +148,7 @@ public class PictureslidingControllerAngular {
         response.put("rating", ratingService.getAverageRating("picture_sliding"));
         response.put("player_rating", ratingService.getRating("picture_sliding", playerName));
         response.put("playerName", playerName);
+        response.put("playerPass", playerPass);
 
         return response;
     }
